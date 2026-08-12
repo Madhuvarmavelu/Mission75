@@ -1,0 +1,761 @@
+/* =====================================================
+   MISSION 75 — THEME
+===================================================== */
+
+:root {
+
+    --bg: #080b09;
+
+    --topbar: #101814;
+
+    --card: #141b17;
+
+    --card-light: #1b241f;
+
+    --border: #263d31;
+
+    --text: #ffffff;
+
+    --muted: #8c9991;
+
+    --green: #00e676;
+
+    --orange: #ff6b35;
+
+    --blue: #4dabf7;
+
+    --cyan: #00bfff;
+
+    --yellow: #ffd43b;
+
+    --purple: #b56cff;
+
+    --gold: #ffc107;
+
+    --red: #ff5252;
+}
+
+
+/* =====================================================
+   GLOBAL
+===================================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+
+body {
+
+    margin: 0;
+
+    background: var(--bg);
+
+    color: var(--text);
+
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Arial,
+        sans-serif;
+}
+
+
+button,
+input {
+    font-family: inherit;
+}
+
+
+/* =====================================================
+   APP
+===================================================== */
+
+.app {
+
+    min-height: 100vh;
+
+    display: flex;
+
+    flex-direction: column;
+}
+
+
+/* =====================================================
+   TOP BAR
+===================================================== */
+
+.topbar {
+
+    height: 75px;
+
+    padding: 0 30px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    background: var(--topbar);
+
+    border-bottom:
+        1px solid var(--border);
+}
+
+
+.logo {
+
+    font-size: 25px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.5px;
+}
+
+
+.logo span {
+    color: var(--green);
+}
+
+
+.day {
+
+    color: var(--muted);
+
+    font-size: 14px;
+}
+
+
+/* =====================================================
+   CONTENT
+===================================================== */
+
+.content {
+
+    flex: 1;
+
+    padding: 25px;
+
+    overflow-y: auto;
+}
+
+
+.page {
+
+    display: none;
+
+    max-width: 1200px;
+
+    margin: auto;
+}
+
+
+.page.active {
+    display: block;
+}
+
+
+h2 {
+    margin-top: 0;
+}
+
+
+.subtitle {
+    color: var(--muted);
+}
+
+
+/* =====================================================
+   CARDS
+===================================================== */
+
+.card {
+
+    background: var(--card);
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 18px;
+
+    padding: 20px;
+
+    box-shadow:
+        0 8px 25px
+        rgba(0,0,0,0.25);
+}
+
+
+.card:hover {
+
+    border-color:
+        #365844;
+}
+
+
+/* =====================================================
+   STAT CARDS
+===================================================== */
+
+.stats-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 15px;
+
+    margin-bottom: 20px;
+}
+
+
+.stat-title {
+
+    color: var(--muted);
+
+    font-size: 13px;
+
+    font-weight: 600;
+}
+
+
+.stat-value {
+
+    font-size: 30px;
+
+    font-weight: 800;
+
+    margin-top: 8px;
+}
+
+
+.green {
+    color: var(--green);
+}
+
+
+.yellow {
+    color: var(--yellow);
+}
+
+
+.purple {
+    color: var(--purple);
+}
+
+
+.red {
+    color: var(--red);
+}
+
+
+/* =====================================================
+   MAIN DASHBOARD
+===================================================== */
+
+.main-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        1.4fr 1fr;
+
+    gap: 20px;
+}
+
+
+/* =====================================================
+   WEIGHT
+===================================================== */
+
+.big-weight {
+
+    font-size: 55px;
+
+    font-weight: 900;
+
+    color: var(--green);
+}
+
+
+/* =====================================================
+   MISSION PROGRESS
+===================================================== */
+
+.progress-bg {
+
+    height: 18px;
+
+    background: #27332c;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+
+    margin: 20px 0 10px;
+}
+
+
+.progress {
+
+    height: 100%;
+
+    width: 0%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #00b84f,
+            #00e676
+        );
+
+    transition:
+        width 0.6s ease;
+
+    box-shadow:
+        0 0 15px
+        rgba(0,230,118,0.5);
+}
+
+
+/* =====================================================
+   TARGETS
+===================================================== */
+
+.target {
+    margin-bottom: 20px;
+}
+
+
+.target-head {
+
+    display: flex;
+
+    justify-content:
+        space-between;
+
+    font-size: 14px;
+}
+
+
+.target-bg {
+
+    height: 11px;
+
+    background: #29312c;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+
+    margin-top: 8px;
+}
+
+
+.target-fill {
+
+    height: 100%;
+
+    width: 0%;
+
+    transition:
+        width 0.5s ease;
+}
+
+
+.calorie {
+    background: var(--orange);
+}
+
+
+.protein {
+    background: var(--blue);
+}
+
+
+.water {
+    background: var(--cyan);
+}
+
+
+.steps {
+    background: var(--yellow);
+}
+
+
+/* =====================================================
+   BUTTONS
+===================================================== */
+
+button {
+
+    border: none;
+
+    border-radius: 10px;
+
+    padding: 13px 18px;
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+
+.primary {
+
+    background: var(--green);
+
+    color: #06100a;
+
+    box-shadow:
+        0 0 15px
+        rgba(0,230,118,0.25);
+}
+
+
+.primary:hover {
+
+    background: #33eb91;
+}
+
+
+.danger {
+
+    background: #4a1717;
+
+    color: white;
+}
+
+
+/* =====================================================
+   FORM
+===================================================== */
+
+.form-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 15px;
+}
+
+
+label {
+
+    color: var(--muted);
+
+    font-size: 13px;
+}
+
+
+input {
+
+    width: 100%;
+
+    padding: 13px;
+
+    margin-top: 7px;
+
+    background: #202923;
+
+    color: white;
+
+    border:
+        1px solid #34463a;
+
+    border-radius: 9px;
+
+    font-size: 16px;
+
+    outline: none;
+}
+
+
+input:focus {
+
+    border-color:
+        var(--green);
+
+    box-shadow:
+        0 0 8px
+        rgba(0,230,118,0.2);
+}
+
+
+/* =====================================================
+   XP
+===================================================== */
+
+.xp {
+
+    color: var(--purple);
+
+    font-size: 35px;
+
+    font-weight: 800;
+}
+
+
+.rank {
+
+    color: var(--gold);
+
+    font-size: 22px;
+
+    font-weight: 800;
+}
+
+
+/* =====================================================
+   NAVIGATION
+===================================================== */
+
+.nav {
+
+    height: 80px;
+
+    background: var(--topbar);
+
+    border-top:
+        1px solid var(--border);
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 50px;
+}
+
+
+.nav button {
+
+    background: transparent;
+
+    color: #68736d;
+
+    font-size: 13px;
+
+    padding: 8px 15px;
+}
+
+
+.nav button.active {
+
+    color: var(--green);
+}
+
+
+.nav button:hover {
+
+    color: var(--green);
+}
+
+
+/* =====================================================
+   CHART
+===================================================== */
+
+.chart-container {
+
+    height: 320px;
+}
+
+
+canvas {
+
+    width: 100%;
+
+    height: 100%;
+}
+
+
+/* =====================================================
+   HISTORY
+===================================================== */
+
+.history {
+
+    display: grid;
+
+    gap: 10px;
+}
+
+
+.history-item {
+
+    background:
+        var(--card-light);
+
+    border:
+        1px solid #29372e;
+
+    border-radius: 12px;
+
+    padding: 15px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+}
+
+
+.history-weight {
+
+    color: var(--green);
+
+    font-size: 20px;
+
+    font-weight: 800;
+}
+
+
+/* =====================================================
+   ACHIEVEMENTS
+===================================================== */
+
+.achievement-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 15px;
+}
+
+
+.achievement {
+
+    padding: 20px;
+
+    background:
+        var(--card-light);
+
+    border:
+        1px solid #29372e;
+
+    border-radius: 15px;
+}
+
+
+.achievement.unlocked {
+
+    border-color:
+        var(--gold);
+
+    box-shadow:
+        0 0 12px
+        rgba(255,193,7,0.1);
+}
+
+
+.achievement-icon {
+
+    font-size: 32px;
+
+    margin-bottom: 8px;
+}
+
+
+.locked {
+    opacity: 0.3;
+}
+
+
+/* =====================================================
+   IPAD / TABLET
+===================================================== */
+
+@media(max-width: 1000px) {
+
+    .stats-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+
+    .main-grid {
+
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .achievement-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+}
+
+
+/* =====================================================
+   PHONE
+===================================================== */
+
+@media(max-width: 600px) {
+
+    .content {
+        padding: 15px;
+    }
+
+
+    .topbar {
+        padding: 0 15px;
+    }
+
+
+    .logo {
+        font-size: 21px;
+    }
+
+
+    .stats-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+
+    .form-grid {
+
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .achievement-grid {
+
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .nav {
+
+        gap: 5px;
+    }
+
+
+    .nav button {
+
+        padding: 8px;
+
+        font-size: 12px;
+    }
+
+
+    .big-weight {
+        font-size: 45px;
+    }
+}
