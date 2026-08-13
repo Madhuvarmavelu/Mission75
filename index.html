@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="theme-color"
+        content="#080b09"
+    >
+
+    <title>Mission 75</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<div class="app">
+
+
+    <!-- =========================================
+         TOP BAR
+    ========================================== -->
+
+    <header class="topbar">
+
+        <div class="logo">
+
+            🎯 MISSION
+            <span>75</span>
+
+        </div>
+
+
+        <div
+            class="day"
+            id="todayText">
+        </div>
+
+    </header>
+
+
+
+    <!-- =========================================
+         MAIN CONTENT
+    ========================================== -->
+
+    <main class="content">
+
+
+        <!-- =====================================
+             DASHBOARD
+        ====================================== -->
+
+        <section
+            id="dashboard"
+            class="page active"
+        >
+
+            <h2>
+                🦁 LEO'S MISSION HUB
+            </h2>
+
+
+            <p class="subtitle">
+                Stay consistent. 75 KG is the mission.
+            </p>
+
+
+
+            <!-- TOP STATS -->
+
+            <div class="stats-grid">
+
+
+                <!-- WEIGHT -->
+
+                <div class="card">
+
+                    <div class="stat-title">
+                        ⚖️ CURRENT WEIGHT
+                    </div>
+
+                    <div
+                        class="stat-value green"
+                        id="dashWeight"
+                    >
+                        98.5 kg
+                    </div>
+
+                </div>
+
+
+
+                <!-- REMAINING -->
+
+                <div class="card">
+
+                    <div class="stat-title">
+                        🎯 TO GOAL
+                    </div>
+
+                    <div
+                        class="stat-value yellow"
+                        id="dashRemaining"
+                    >
+                        23.5 kg
+                    </div>
+
+                </div>
+
+
+
+                <!-- XP -->
+
+                <div class="card">
+
+                    <div class="stat-title">
+                        ⭐ XP
+                    </div>
+
+                    <div
+                        class="stat-value purple"
+                        id="dashXP"
+                    >
+                        0
+                    </div>
+
+                </div>
+
+
+
+                <!-- STREAK -->
+
+                <div class="card">
+
+                    <div class="stat-title">
+                        🔥 STREAK
+                    </div>
+
+                    <div
+                        class="stat-value red"
+                        id="dashStreak"
+                    >
+                        0 days
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================
+                 MAIN DASHBOARD
+            ================================== -->
+
+            <div class="main-grid">
+
+
+                <!-- =================================
+                     MISSION PROGRESS
+                ================================== -->
+
+                <div class="card">
+
+                    <h2>
+                        🏆 Mission Progress
+                    </h2>
+
+
+                    <div
+                        class="big-weight"
+                        id="bigWeight"
+                    >
+                        98.5 kg
+                    </div>
+
+
+                    <p class="subtitle">
+
+                        Starting:
+                        <strong>98.5 kg</strong>
+
+                        <br>
+
+                        Goal:
+                        <strong>75 kg</strong>
+
+                    </p>
+
+
+                    <div class="progress-bg">
+
+                        <div
+                            class="progress"
+                            id="mainProgress"
+                        >
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        class="green progress-text"
+                        id="progressPercent"
+                    >
+                        0%
+                    </div>
+
+
+                    <p
+                        class="subtitle"
+                        id="lostText"
+                    >
+                        0 kg lost
+                    </p>
+
+                </div>
+
+
+
+                <!-- =================================
+                     TODAY TARGETS
+                ================================== -->
+
+                <div class="card">
+
+                    <h2>
+                        🎯 Today's Targets
+                    </h2>
+
+
+
+                    <!-- CALORIES -->
+
+                    <div class="target">
+
+                        <div class="target-head">
+
+                            <span>
+                                🔥 Calories
+                            </span>
+
+                            <span id="calorieText">
+                                0 / 2000
+                            </span>
+
+                        </div>
+
+
+                        <div class="target-bg">
+
+                            <div
+                                id="calorieFill"
+                                class="target-fill calorie"
+                            >
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- PROTEIN -->
+
+                    <div class="target">
+
+                        <div class="target-head">
+
+                            <span>
+                                💪 Protein
+                            </span>
+
+                            <span id="proteinText">
+                                0 / 120g
+                            </span>
+
+                        </div>
+
+
+                        <div class="target-bg">
+
+                            <div
+                                id="proteinFill"
+                                class="target-fill protein"
+                            >
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- WATER -->
+
+                    <div class="target">
+
+                        <div class="target-head">
+
+                            <span>
+                                💧 Water
+                            </span>
+
+                            <span id="waterText">
+                                0 / 3.5L
+                            </span>
+
+                        </div>
+
+
+                        <div class="target-bg">
+
+                            <div
+                                id="waterFill"
+                                class="target-fill water"
+                            >
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- STEPS -->
+
+                    <div class="target">
+
+                        <div class="target-head">
+
+                            <span>
+                                👟 Steps
+                            </span>
+
+                            <span id="stepsText">
+                                0 / 8000
+                            </span>
+
+                        </div>
+
+
+                        <div class="target-bg">
+
+                            <div
+                                id="stepsFill"
+                                class="target-fill steps"
+                            >
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================
+                 LEO PROJECTION
+            ================================== -->
+
+            <div class="card projection-card">
+
+
+                <div class="projection-title">
+
+                    <div>
+
+                        <h2>
+                            🦁 LEO'S PROJECTION
+                        </h2>
+
+                        <p class="subtitle">
+                            Calorie-deficit based estimate
+                        </p>
+
+                    </div>
+
+
+                    <div class="projection-badge">
+                        ⚡ LIVE
+                    </div>
+
+                </div>
+
+
+
+                <div class="projection-grid">
+
+
+                    <!-- MAINTENANCE -->
+
+                    <div class="projection-item">
+
+                        <span>
+                            🔥 Maintenance
+                        </span>
+
+                        <strong
+                            id="maintenanceCalories"
+                        >
+                            2700 kcal
+                        </strong>
+
+                    </div>
+
+
+
+                    <!-- DAILY TARGET -->
+
+                    <div class="projection-item">
+
+                        <span>
+                            🍽️ Daily Target
+                        </span>
+
+                        <strong
+                            id="dailyCalories"
+                        >
+                            2000 kcal
+                        </strong>
+
+                    </div>
+
+
+
+                    <!-- DEFICIT -->
+
+                    <div class="projection-item">
+
+                        <span>
+                            ⚡ Daily Deficit
+                        </span>
+
+                        <strong
+                            id="dailyDeficit"
+                        >
+                            700 kcal
+                        </strong>
+
+                    </div>
+
+
+
+                    <!-- WEEKLY LOSS -->
+
+                    <div class="projection-item">
+
+                        <span>
+                            📉 Estimated Loss
+                        </span>
+
+                        <strong
+                            id="weeklyLoss"
+                        >
+                            0.64 kg/week
+                        </strong>
+
+                    </div>
+
+
+
+                    <!-- DAYS -->
+
+                    <div
+                        class="projection-item highlight"
+                    >
+
+                        <span>
+                            ⏳ Days Remaining
+                        </span>
+
+                        <strong
+                            id="daysRemaining"
+                        >
+                            --
+                        </strong>
+
+                    </div>
+
+
+
+                    <!-- DATE -->
+
+                    <div
+                        class="projection-item highlight"
+                    >
+
+                        <span>
+                            🏁 Estimated Goal
+                        </span>
+
+                        <strong
+                            id="goalDate"
+                        >
+                            --
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <p class="projection-note">
+
+                    Based on your planned calorie deficit.
+                    Actual progress may vary as your weight
+                    and calorie needs change.
+
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================
+             DAILY LOG
+        ====================================== -->
+
+        <section
+            id="log"
+            class="page"
+        >
+
+            <h2>
+                📝 Daily Log
+            </h2>
+
+
+            <p class="subtitle">
+                Update today's progress.
+            </p>
+
+
+
+            <div class="card">
+
+
+                <div class="form-grid">
+
+
+                    <!-- WEIGHT -->
+
+                    <div>
+
+                        <label>
+                            ⚖️ Weight (kg)
+                        </label>
+
+                        <input
+                            id="weightInput"
+                            type="number"
+                            step="0.1"
+                            placeholder="98.5"
+                        >
+
+                    </div>
+
+
+
+                    <!-- CALORIES -->
+
+                    <div>
+
+                        <label>
+                            🔥 Calories
+                        </label>
+
+                        <input
+                            id="calorieInput"
+                            type="number"
+                            placeholder="2000"
+                        >
+
+                    </div>
+
+
+
+                    <!-- PROTEIN -->
+
+                    <div>
+
+                        <label>
+                            💪 Protein (g)
+                        </label>
+
+                        <input
+                            id="proteinInput"
+                            type="number"
+                            placeholder="120"
+                        >
+
+                    </div>
+
+
+
+                    <!-- WATER -->
+
+                    <div>
+
+                        <label>
+                            💧 Water (L)
+                        </label>
+
+                        <input
+                            id="waterInput"
+                            type="number"
+                            step="0.1"
+                            placeholder="3.5"
+                        >
+
+                    </div>
+
+
+
+                    <!-- STEPS -->
+
+                    <div>
+
+                        <label>
+                            👟 Steps
+                        </label>
+
+                        <input
+                            id="stepsInput"
+                            type="number"
+                            placeholder="8000"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <br>
+
+
+                <button
+                    class="primary"
+                    onclick="saveToday()"
+                >
+                    SAVE TODAY 🚀
+                </button>
+
+            </div>
+
+
+
+            <br>
+
+
+            <div class="card">
+
+                <h2>
+                    ⭐ Today's XP
+                </h2>
+
+
+                <div
+                    class="xp"
+                    id="todayXP"
+                >
+                    0 XP
+                </div>
+
+
+                <p class="subtitle">
+
+                    25 XP for every completed target.
+
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================
+             PROGRESS
+        ====================================== -->
+
+        <section
+            id="progressPage"
+            class="page"
+        >
+
+            <h2>
+                📈 Progress
+            </h2>
+
+
+            <p class="subtitle">
+                Track your journey toward 75 KG.
+            </p>
+
+
+
+            <div class="card">
+
+                <div class="chart-container">
+
+                    <canvas
+                        id="weightChart"
+                    >
+                    </canvas>
+
+                </div>
+
+            </div>
+
+
+
+            <br>
+
+
+            <div class="card">
+
+                <h2>
+                    📅 Weight History
+                </h2>
+
+
+                <div
+                    id="history"
+                    class="history"
+                >
+                    No entries yet.
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================
+             ACHIEVEMENTS
+        ====================================== -->
+
+        <section
+            id="achievementsPage"
+            class="page"
+        >
+
+            <h2>
+                🏆 Achievements
+            </h2>
+
+
+            <p class="subtitle">
+
+                Complete milestones and become a
+                Mission 75 legend.
+
+            </p>
+
+
+            <div
+                id="achievementGrid"
+                class="achievement-grid"
+            >
+            </div>
+
+
+            <br>
+
+
+            <div class="card">
+
+                <h2>
+                    ⭐ Current Rank
+                </h2>
+
+
+                <div
+                    id="rank"
+                    class="rank"
+                >
+                    Recruit
+                </div>
+
+
+                <p class="subtitle">
+                    Keep earning XP to rank up.
+                </p>
+
+            </div>
+
+
+            <br>
+
+
+            <button
+                class="danger"
+                onclick="resetTracker()"
+            >
+                RESET ALL DATA
+            </button>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- =========================================
+         BOTTOM NAVIGATION
+    ========================================== -->
+
+    <nav class="nav">
+
+
+        <button
+            class="active"
+            onclick="
+                showPage(
+                    'dashboard',
+                    this
+                )
+            "
+        >
+
+            🏠
+            <br>
+            Dashboard
+
+        </button>
+
+
+
+        <button
+            onclick="
+                showPage(
+                    'log',
+                    this
+                )
+            "
+        >
+
+            📝
+            <br>
+            Log
+
+        </button>
+
+
+
+        <button
+            onclick="
+                showPage(
+                    'progressPage',
+                    this
+                )
+            "
+        >
+
+            📈
+            <br>
+            Progress
+
+        </button>
+
+
+
+        <button
+            onclick="
+                showPage(
+                    'achievementsPage',
+                    this
+                )
+            "
+        >
+
+            🏆
+            <br>
+            Awards
+
+        </button>
+
+    </nav>
+
+</div>
+
+
+
+<script
+    src="script.js"
+></script>
+
+
+</body>
+
+</html>
