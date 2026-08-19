@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="theme-color" content="#050b14">
+
+  <title>The Comeback | Pitch Tales Cricket Club</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="topbar">
+
+    <div>
+      <p class="brand-small">PITCH TALES CRICKET CLUB</p>
+      <h1>THE COMEBACK</h1>
+    </div>
+
+    <button class="menu-btn" aria-label="Menu">
+      ☰
+    </button>
+
+  </header>
+
+
+  <main>
+
+    <!-- PLAYER CARD -->
+    <section class="player-card">
+
+      <div class="player-info">
+
+        <div class="player-avatar">
+          🏏
+        </div>
+
+        <div>
+          <p class="label">AMATEUR CRICKETER</p>
+
+          <h2>Madhuvarma</h2>
+
+          <p>
+            Right-Hand • Wicketkeeper-Batsman
+          </p>
+        </div>
+
+      </div>
+
+
+      <div class="weight-section">
+
+        <div>
+
+          <span>START</span>
+
+          <strong>
+            98.5
+          </strong>
+
+          <small>kg</small>
+
+        </div>
+
+
+        <div class="arrow">
+          →
+        </div>
+
+
+        <div>
+
+          <span>TARGET</span>
+
+          <strong class="target">
+            75.0
+          </strong>
+
+          <small>kg</small>
+
+        </div>
+
+      </div>
+
+
+      <div class="progress-bar">
+
+        <div id="weightProgress"></div>
+
+      </div>
+
+
+      <p class="remaining">
+
+        <span id="remainingWeight">
+          23.5
+        </span>
+
+        kg to go
+
+      </p>
+
+    </section>
+
+
+
+    <!-- EPISODE -->
+    <section class="episode-card">
+
+      <div class="episode-number">
+        EPISODE 01
+      </div>
+
+      <h2>
+        THE WAKE-UP CALL
+      </h2>
+
+      <p>
+        Talent got you here.
+        Discipline will take you further.
+      </p>
+
+
+      <div class="episode-progress">
+
+        <div id="episodeProgress"></div>
+
+      </div>
+
+
+      <div class="episode-footer">
+
+        <span>
+          Episode Progress
+        </span>
+
+        <strong id="episodePercent">
+          0%
+        </strong>
+
+      </div>
+
+
+      <button
+        class="primary-btn"
+        onclick="continueEpisode()"
+      >
+        CONTINUE JOURNEY
+      </button>
+
+    </section>
+
+
+
+    <!-- TODAY -->
+    <section>
+
+      <div class="section-title">
+
+        <h2>
+          Today's Journey
+        </h2>
+
+        <span>
+          DAY <span id="dayNumber">1</span>
+        </span>
+
+      </div>
+
+
+
+      <!-- WALKING -->
+      <div class="tracking-card">
+
+        <div class="tracking-icon">
+          🚶
+        </div>
+
+
+        <div class="tracking-content">
+
+          <div class="tracking-heading">
+
+            <div>
+
+              <h3>
+                Walking
+              </h3>
+
+              <p>
+                Daily movement
+              </p>
+
+            </div>
+
+
+            <strong>
+
+              <span id="steps">
+                0
+              </span>
+
+              <small>
+                / 8,000
+              </small>
+
+            </strong>
+
+          </div>
+
+
+          <div class="progress-bar">
+
+            <div id="stepsProgress"></div>
+
+          </div>
+
+
+          <div class="step-controls">
+
+            <button onclick="addSteps(1000)">
+              +1,000
+            </button>
+
+            <button onclick="addSteps(500)">
+              +500
+            </button>
+
+            <button onclick="addSteps(100)">
+              +100
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- CALORIES -->
+      <div class="tracking-card">
+
+        <div class="tracking-icon">
+          🍽️
+        </div>
+
+
+        <div class="tracking-content">
+
+          <div class="tracking-heading">
+
+            <div>
+
+              <h3>
+                Calories
+              </h3>
+
+              <p>
+                Daily target
+              </p>
+
+            </div>
+
+
+            <strong>
+
+              <span id="calories">
+                0
+              </span>
+
+              <small>
+                / 2,000 kcal
+              </small>
+
+            </strong>
+
+          </div>
+
+
+          <div class="progress-bar">
+
+            <div id="calorieProgress"></div>
+
+          </div>
+
+
+          <button
+            class="secondary-btn"
+            onclick="addCalories()"
+          >
+            + Add calories
+          </button>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- WATER -->
+      <div class="tracking-card">
+
+        <div class="tracking-icon">
+          💧
+        </div>
+
+
+        <div class="tracking-content">
+
+          <div class="tracking-heading">
+
+            <div>
+
+              <h3>
+                Water
+              </h3>
+
+              <p>
+                Daily target
+              </p>
+
+            </div>
+
+
+            <strong>
+
+              <span id="water">
+                0.0
+              </span>
+
+              <small>
+                / 3.5 L
+              </small>
+
+            </strong>
+
+          </div>
+
+
+          <div class="progress-bar">
+
+            <div id="waterProgress"></div>
+
+          </div>
+
+
+          <button
+            class="secondary-btn"
+            onclick="addWater()"
+          >
+            + 500 ml
+          </button>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- SLEEP -->
+      <div class="tracking-card">
+
+        <div class="tracking-icon">
+          🌙
+        </div>
+
+
+        <div class="tracking-content">
+
+          <div class="tracking-heading">
+
+            <div>
+
+              <h3>
+                Sleep
+              </h3>
+
+              <p>
+                Recovery
+              </p>
+
+            </div>
+
+
+            <strong>
+
+              <span id="sleep">
+                0.0
+              </span>
+
+              <small>
+                / 7 hrs
+              </small>
+
+            </strong>
+
+          </div>
+
+
+          <div class="progress-bar">
+
+            <div id="sleepProgress"></div>
+
+          </div>
+
+
+          <button
+            class="secondary-btn"
+            onclick="addSleep()"
+          >
+            + 1 hour
+          </button>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- WEIGHT JOURNEY -->
+    <section class="weight-log">
+
+      <div class="section-title">
+
+        <h2>
+          Weight Journey
+        </h2>
+
+      </div>
+
+
+      <div class="weight-number">
+
+        <span id="currentWeight">
+          98.5
+        </span>
+
+        <small>
+          kg
+        </small>
+
+      </div>
+
+
+      <p>
+        Update your current weight
+      </p>
+
+
+      <div class="weight-input">
+
+        <input
+          type="number"
+          id="weightInput"
+          placeholder="Enter weight"
+          step="0.1"
+          min="40"
+          max="200"
+        >
+
+
+        <button onclick="updateWeight()">
+          UPDATE
+        </button>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- GOAL FORECAST -->
+    <section class="forecast-card">
+
+      <div class="section-title">
+
+        <h2>
+          Goal Forecast
+        </h2>
+
+        <span>
+          CALORIE DEFICIT
+        </span>
+
+      </div>
+
+
+      <div class="forecast-main">
+
+        <div>
+
+          <p>
+            ESTIMATED TIME
+          </p>
+
+          <strong id="goalDays">
+            --
+          </strong>
+
+          <small>
+            days
+          </small>
+
+        </div>
+
+
+        <div class="forecast-date">
+
+          <p>
+            ESTIMATED GOAL DATE
+          </p>
+
+          <strong id="goalDate">
+            --
+          </strong>
+
+        </div>
+
+      </div>
+
+
+      <div class="forecast-stats">
+
+        <div>
+
+          <span>
+            Maintenance
+          </span>
+
+          <strong>
+
+            <span id="maintenanceCalories">
+              2700
+            </span>
+
+            kcal
+
+          </strong>
+
+        </div>
+
+
+        <div>
+
+          <span>
+            Daily Intake
+          </span>
+
+          <strong>
+
+            <span id="forecastCalories">
+              2000
+            </span>
+
+            kcal
+
+          </strong>
+
+        </div>
+
+
+        <div>
+
+          <span>
+            Daily Deficit
+          </span>
+
+          <strong>
+
+            <span id="dailyDeficit">
+              700
+            </span>
+
+            kcal
+
+          </strong>
+
+        </div>
+
+      </div>
+
+
+      <p class="forecast-note">
+
+        Projection assumes a constant calorie deficit.
+        Actual progress may vary.
+
+      </p>
+
+    </section>
+
+
+
+    <!-- NEXT MILESTONE -->
+    <section class="milestone-card">
+
+      <p>
+        NEXT MILESTONE
+      </p>
+
+      <h2>
+        Reach 95 kg
+      </h2>
+
+
+      <div class="milestone-progress">
+
+        <div id="milestoneProgress"></div>
+
+      </div>
+
+
+      <span id="milestoneText">
+        3.5 kg to go
+      </span>
+
+    </section>
+
+
+
+    <!-- STORY -->
+    <section class="story-card">
+
+      <p>
+        THE COMEBACK
+      </p>
+
+      <h2>
+        One step at a time.
+      </h2>
+
+
+      <p>
+        This isn't about becoming perfect overnight.
+        It's about becoming better every day.
+      </p>
+
+
+      <div class="story-line">
+        🏏 → 🚶 → 💪 → 🏆
+      </div>
+
+    </section>
+
+  </main>
+
+
+
+  <!-- BOTTOM NAV -->
+  <nav class="bottom-nav">
+
+    <button class="active">
+
+      🏠
+
+      <span>
+        Journey
+      </span>
+
+    </button>
+
+
+    <button>
+
+      🚶
+
+      <span>
+        Walk
+      </span>
+
+    </button>
+
+
+    <button>
+
+      📖
+
+      <span>
+        Story
+      </span>
+
+    </button>
+
+
+    <button>
+
+      📊
+
+      <span>
+        Progress
+      </span>
+
+    </button>
+
+  </nav>
+
+
+
+  <script src="script.js"></script>
+
+</body>
+</html>
