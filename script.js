@@ -1,109 +1,93 @@
-const pages = document.querySelectorAll(".page");
-const navButtons = document.querySelectorAll("[data-page]");
+// Goal timeline estimate:
+// remaining kg × 7,700 kcal/kg ÷ daily calorie deficit.
+const currentWeight = 98.5;
+const goalWeight = 75.0;
+const maintenanceCalories = 2700;
+const targetCalories = 2000;
 
-function showPage(id){
-  pages.forEach(p => p.classList.toggle("active-page", p.id === id));
-  document.querySelectorAll(".nav-btn,.tab").forEach(b => {
-    b.classList.toggle("active", b.dataset.page === id);
-  });
-  window.scrollTo({top:0, behavior:"smooth"});
-}
+const dailyDeficit = Math.max(maintenanceCalories - targetCalories, 1);
+const remainingKg = Math.max(currentWeight - goalWeight, 0);
+const requiredDeficit = remainingKg * 7700;
+const daysToGoal = Math.ceil(requiredDeficit / dailyDeficit);
 
-navButtons.forEach(btn => btn.addEventListener("click", () => showPage(btn.dataset.page)));
+document.getElementById("daysRemaining").textContent = daysToGoal;
+document.getElementById("dailyDeficit").textContent = `${dailyDeficit.toLocaleString()} kcal`;
 
-document.querySelectorAll(".filter").forEach(btn => {
-  btn.addEventListener("click", () => {
-    document.querySelectorAll(".filter").forEach(b => b.classList.remove("active"));
-    btn.classList.add("active");
-  });
-});
+const canvas = document.getElementById("weightChart");
+const ctx = canvas.getContext("2d");
 
-function setupCanvas(canvas, values, options={}){
-  if(!canvas) return;
+function drawChart(){
   const dpr = window.devicePixelRatio || 1;
-  const rect = canvas.getBoundingClientRect();
-  const width = Math.max(280, rect.width);
+  const width = canvas.clientWidth;
   const height = canvas.height;
+
   canvas.width = width * dpr;
   canvas.height = height * dpr;
-  const ctx = canvas.getContext("2d");
-  ctx.scale(dpr,dpr);
+  ctx.setTransform(dpr,0,0,dpr,0,0);
 
-  const pad = {top:18,right:8,bottom:25,left:8};
+  const values = [
+    98.5,98.2,97.8,98.1,97.4,96.8,96.2,95.5,
+    94.8,94.5,93.8,93.0,92.4,91.8,90.9,90.2,
+    89.5,88.5,87.4,86.2,85.3,84.0,82.8,81.7,
+    80.5,79.2,78.1,77.0,76.2,75.0
+  ];
+
+  const pad = {top:12,right:5,bottom:15,left:5};
   const w = width-pad.left-pad.right;
   const h = height-pad.top-pad.bottom;
-  const min = options.min ?? Math.min(...values);
-  const max = options.max ?? Math.max(...values);
-  const range = max-min || 1;
+  const min = 73;
+  const max = 100;
 
   ctx.clearRect(0,0,width,height);
 
-  // Grid
-  ctx.strokeStyle = "#152230";
-  ctx.lineWidth = 1;
-  for(let i=0;i<4;i++){
-    const y = pad.top + h*(i/3);
-    ctx.beginPath(); ctx.moveTo(pad.left,y); ctx.lineTo(width-pad.right,y); ctx.stroke();
+  ctx.strokeStyle="#142130";
+  ctx.lineWidth=1;
+
+  for(let i=0;i<3;i++){
+    const y=pad.top+h*(i/2);
+    ctx.beginPath();
+    ctx.moveTo(pad.left,y);
+    ctx.lineTo(width-pad.right,y);
+    ctx.stroke();
   }
 
-  const points = values.map((v,i)=>({
-    x: pad.left + w*(i/(values.length-1)),
-    y: pad.top + h*(1-(v-min)/range)
+  const points=values.map((v,i)=>({
+    x:pad.left+w*(i/(values.length-1)),
+    y:pad.top+h*(1-(v-min)/(max-min))
   }));
 
-  // Fill
-  const grad = ctx.createLinearGradient(0,pad.top,0,height);
-  grad.addColorStop(0,"rgba(22,131,255,.30)");
-  grad.addColorStop(1,"rgba(22,131,255,0)");
+  const gradient=ctx.createLinearGradient(0,pad.top,0,height);
+  gradient.addColorStop(0,"rgba(22,131,255,.28)");
+  gradient.addColorStop(1,"rgba(22,131,255,0)");
+
   ctx.beginPath();
   ctx.moveTo(points[0].x,height-pad.bottom);
-  points.forEach(p=>ctx.lineTo(p.x,p.y));
-  ctx.lineTo(points[points.length-1].x,height-pad.bottom);
+  points.forEach((p,i)=>i?ctx.lineTo(p.x,p.y):ctx.lineTo(p.x,p.y));
+  ctx.lineTo(points.at(-1).x,height-pad.bottom);
   ctx.closePath();
-  ctx.fillStyle=grad;
+  ctx.fillStyle=gradient;
   ctx.fill();
 
-  // Line
   ctx.beginPath();
-  points.forEach((p,i)=>i ? ctx.lineTo(p.x,p.y) : ctx.moveTo(p.x,p.y));
+  points.forEach((p,i)=>i?ctx.lineTo(p.x,p.y):ctx.moveTo(p.x,p.y));
   ctx.strokeStyle="#1683ff";
-  ctx.lineWidth=2.5;
+  ctx.lineWidth=2.2;
   ctx.shadowColor="rgba(22,131,255,.45)";
   ctx.shadowBlur=8;
   ctx.stroke();
   ctx.shadowBlur=0;
 
-  // Points
-  points.forEach((p,i)=>{
+  [points[0],points.at(-1)].forEach(p=>{
     ctx.beginPath();
-    ctx.arc(p.x,p.y,i===points.length-1?4:2.5,0,Math.PI*2);
+    ctx.arc(p.x,p.y,3.5,0,Math.PI*2);
     ctx.fillStyle="#1683ff";
     ctx.fill();
   });
-
-  if(options.labels){
-    ctx.fillStyle="#647387";
-    ctx.font="9px -apple-system, BlinkMacSystemFont, sans-serif";
-    options.labels.forEach((label,i)=>{
-      const x=pad.left+w*(i/(options.labels.length-1));
-      ctx.fillText(label,x-10,height-7);
-    });
-  }
 }
 
-function drawCharts(){
-  setupCanvas(
-    document.getElementById("todayChart"),
-    [32,38,42,48,50,57,63,70,78],
-    {min:0,max:100,labels:["","", "", "", "", "", "", "", ""]}
-  );
+document.getElementById("logButton").addEventListener("click",()=>{
+  document.querySelector(".today").scrollIntoView({behavior:"smooth"});
+});
 
-  setupCanvas(
-    document.getElementById("weightChart"),
-    [98.5,98.2,97.8,98.1,97.4,96.8,96.2,95.5,94.8,94.5,93.8,93.0,92.4,91.8,90.9,90.2,89.5,88.5,87.4,86.2,85.3,84.0,82.8,81.7,80.5,79.2,78.1,77.0,76.2,75.0],
-    {min:73,max:100,labels:["Day 1","Day 15","Day 30","Day 45","Day 60","Day 75","Day 90"]}
-  );
-}
-
-window.addEventListener("resize", drawCharts);
-drawCharts();
+window.addEventListener("resize",drawChart);
+drawChart();
