@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#05070b">
+  <title>Madhuvarma — The Comeback</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <header class="header">
+      <div>
+        <div class="label">THE COMEBACK</div>
+        <h1>Madhuvarma<span>.</span></h1>
+        <p>One day at a time.</p>
+      </div>
+      <div class="day">DAY 06</div>
+    </header>
+
+    <section class="hero card">
+      <div class="hero-top">
+        <div>
+          <span class="muted">CURRENT WEIGHT</span>
+          <strong class="weight">98.5 <small>kg</small></strong>
+        </div>
+        <div class="goal">
+          <span class="muted">GOAL</span>
+          <strong>75.0 <small>kg</small></strong>
+        </div>
+      </div>
+
+      <div class="progress-track">
+        <div class="progress-fill"></div>
+      </div>
+
+      <div class="progress-meta">
+        <span>0 kg</span>
+        <b>23.5 kg to go</b>
+        <span>75 kg</span>
+      </div>
+    </section>
+
+    <section class="card calorie-card">
+      <div class="section-head">
+        <h2>Calorie Balance</h2>
+        <span id="deficitLabel">−1,188 kcal</span>
+      </div>
+
+      <div class="calorie-grid">
+        <div>
+          <span class="muted">CONSUMED</span>
+          <strong id="consumedValue">1,420</strong>
+          <small>kcal</small>
+        </div>
+        <div>
+          <span class="muted">BASE BURN</span>
+          <strong id="baseBurnValue">2,280</strong>
+          <small>kcal</small>
+        </div>
+        <div>
+          <span class="muted">STEPS BURN</span>
+          <strong id="stepsBurnValue">328</strong>
+          <small>kcal</small>
+        </div>
+      </div>
+
+      <div class="calorie-total">
+        <span>Total estimated burn</span>
+        <b id="totalBurnValue">2,608 kcal</b>
+      </div>
+
+      <div class="calorie-note">
+        Deficit = total burn − calories consumed
+      </div>
+    </section>
+
+    <section class="card timeline-card">
+      <div>
+        <span class="muted">ESTIMATED TIME TO GOAL</span>
+        <strong id="daysRemaining">153</strong>
+        <small>days</small>
+      </div>
+      <div class="timeline-detail">
+        <span>Current daily deficit</span>
+        <b id="dailyDeficit">1,188 kcal</b>
+        <small id="estimateNote">Based on today's intake and steps.</small>
+      </div>
+    </section>
+
+    <section class="today">
+      <div class="section-head">
+        <h2>Today</h2>
+        <span id="todayPercent">78%</span>
+      </div>
+
+      <div class="metric card">
+        <div class="metric-head"><span>Steps</span><b>6,240 <i>/ 8,000</i></b></div>
+        <div class="line"><span style="width:78%"></span></div>
+      </div>
+
+      <div class="metric card">
+        <div class="metric-head"><span>Calories</span><b>1,420 <i>/ 2,000</i></b></div>
+        <div class="line"><span style="width:71%"></span></div>
+      </div>
+
+      <div class="metric card">
+        <div class="metric-head"><span>Protein</span><b>82 <i>/ 120 g</i></b></div>
+        <div class="line"><span style="width:68%"></span></div>
+      </div>
+
+      <div class="metric card">
+        <div class="metric-head"><span>Water</span><b>2.4 <i>/ 3.5 L</i></b></div>
+        <div class="line"><span style="width:69%"></span></div>
+      </div>
+    </section>
+
+    <section class="card chart-card">
+      <div class="section-head">
+        <h2>Weight</h2>
+        <span>90 days</span>
+      </div>
+      <div class="chart-number">98.5 <small>kg</small></div>
+      <canvas id="weightChart" height="150"></canvas>
+      <div class="chart-footer">
+        <span>START</span>
+        <b>75.0 kg GOAL</b>
+      </div>
+    </section>
+
+    <section class="card summary">
+      <div><strong>−1.7 kg</strong><span>Total lost</span></div>
+      <div><strong>6,240</strong><span>Steps today</span></div>
+      <div><strong>2.4 L</strong><span>Water today</span></div>
+    </section>
+
+    <button class="log-button" id="logButton">+ Log today</button>
+
+    <p class="quote">Keep going, Madhuvarma.</p>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
