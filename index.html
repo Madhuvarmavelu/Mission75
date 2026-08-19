@@ -2,708 +2,227 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <meta name="theme-color" content="#050b14"> 
-
-  <title>The Comeback | Pitch Tales Cricket Club</title>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#05070b">
+  <title>The Comeback</title>
   <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
+  <main class="app-shell">
 
-  <!-- HEADER -->
-  <header class="topbar">
-
-    <div>
-      <p class="brand-small">PITCH TALES CRICKET CLUB</p>
-      <h1>THE COMEBACK</h1>
-    </div>
-
-    <button class="menu-btn" aria-label="Menu">
-      ☰
-    </button>
-
-  </header>
-
-
-  <main>
-
-    <!-- PLAYER CARD -->
-    <section class="player-card">
-
-      <div class="player-info">
-
-        <div class="player-avatar">
-          🏏
-        </div>
-
-        <div>
-          <p class="label">AMATEUR CRICKETER</p>
-
-          <h2>Madhuvarma</h2>
-
-          <p>
-            Right-Hand • Wicketkeeper-Batsman
-          </p>
-        </div>
-
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">THE</p>
+        <h1>COMEBACK<span>.</span></h1>
+        <p class="tagline">Every step. Every choice. Every day.</p>
       </div>
+      <button class="icon-btn" aria-label="Notifications">♧</button>
+    </header>
 
+    <nav class="page-tabs" aria-label="Main sections">
+      <button class="tab active" data-page="home">Home</button>
+      <button class="tab" data-page="progress">Progress</button>
+      <button class="tab" data-page="log">Log</button>
+      <button class="tab" data-page="more">More</button>
+    </nav>
 
-      <div class="weight-section">
+    <!-- HOME -->
+    <section id="home" class="page active-page">
+      <div class="day-pill">DAY 06 / 90</div>
 
-        <div>
-
+      <section class="goal-card card">
+        <div class="goal-side">
           <span>START</span>
-
-          <strong>
-            98.5
-          </strong>
-
+          <strong>98.5</strong>
           <small>kg</small>
-
         </div>
 
-
-        <div class="arrow">
-          →
+        <div class="ring" style="--progress: 24%;">
+          <div>
+            <strong>23.5</strong>
+            <span>KG TO GO</span>
+          </div>
         </div>
 
-
-        <div>
-
-          <span>TARGET</span>
-
-          <strong class="target">
-            75.0
-          </strong>
-
+        <div class="goal-side right">
+          <span>GOAL</span>
+          <strong>75.0</strong>
           <small>kg</small>
+        </div>
+      </section>
 
+      <section class="card">
+        <div class="section-title"><h2>TODAY</h2><span id="dailyPercent">78%</span></div>
+
+        <div class="metric">
+          <div class="metric-icon">♟</div>
+          <div class="metric-main">
+            <div><span>Steps</span><b>6,240 / 8,000</b></div>
+            <div class="bar"><i style="width:78%"></i></div>
+          </div>
         </div>
 
-      </div>
+        <div class="metric">
+          <div class="metric-icon">◉</div>
+          <div class="metric-main">
+            <div><span>Calories</span><b>1,420 / 2,000</b></div>
+            <div class="bar"><i style="width:71%"></i></div>
+          </div>
+        </div>
 
+        <div class="metric">
+          <div class="metric-icon">◈</div>
+          <div class="metric-main">
+            <div><span>Protein</span><b>82 / 120 g</b></div>
+            <div class="bar"><i style="width:68%"></i></div>
+          </div>
+        </div>
 
-      <div class="progress-bar">
+        <div class="metric">
+          <div class="metric-icon">💧</div>
+          <div class="metric-main">
+            <div><span>Water</span><b>2.4 / 3.5 L</b></div>
+            <div class="bar"><i style="width:69%"></i></div>
+          </div>
+        </div>
 
-        <div id="weightProgress"></div>
+        <div class="metric">
+          <div class="metric-icon">☾</div>
+          <div class="metric-main">
+            <div><span>Sleep</span><b>6h 15m / 7h</b></div>
+            <div class="bar"><i style="width:89%"></i></div>
+          </div>
+        </div>
+      </section>
 
-      </div>
-
-
-      <p class="remaining">
-
-        <span id="remainingWeight">
-          23.5
-        </span>
-
-        kg to go
-
-      </p>
-
+      <section class="card progress-card">
+        <div class="section-title">
+          <h2>TODAY'S PROGRESS</h2>
+          <strong>78%</strong>
+        </div>
+        <canvas id="todayChart" height="150"></canvas>
+        <p class="muted">Great job. Keep going.</p>
+        <button class="primary-btn" data-page="log">＋ LOG TODAY</button>
+      </section>
     </section>
 
-
-
-    <!-- EPISODE -->
-    <section class="episode-card">
-
-      <div class="episode-number">
-        EPISODE 01
+    <!-- PROGRESS -->
+    <section id="progress" class="page">
+      <div class="section-heading">
+        <div><p class="eyebrow">YOUR JOURNEY</p><h2>PROGRESS</h2></div>
+        <select><option>90 Days</option><option>30 Days</option><option>7 Days</option></select>
       </div>
 
-      <h2>
-        THE WAKE-UP CALL
-      </h2>
-
-      <p>
-        Talent got you here.
-        Discipline will take you further.
-      </p>
-
-
-      <div class="episode-progress">
-
-        <div id="episodeProgress"></div>
-
+      <div class="filter-row">
+        <button class="filter active">Weight</button>
+        <button class="filter">Steps</button>
+        <button class="filter">Calories</button>
+        <button class="filter">Protein</button>
+        <button class="filter">Water</button>
       </div>
 
+      <section class="card chart-card">
+        <div class="card-heading"><h3>WEIGHT JOURNEY</h3><span>90 Days⌄</span></div>
+        <div class="big-number"><b>98.5</b> kg <em>Start</em></div>
+        <canvas id="weightChart" height="220"></canvas>
+        <div class="goal-line"><span>75.0 kg</span><small>Goal</small></div>
+      </section>
 
-      <div class="episode-footer">
-
-        <span>
-          Episode Progress
-        </span>
-
-        <strong id="episodePercent">
-          0%
-        </strong>
-
+      <div class="stat-grid">
+        <div class="card stat"><b>−1.7 kg</b><span>Total Lost</span></div>
+        <div class="card stat"><b>96.8 kg</b><span>Lowest</span></div>
+        <div class="card stat"><b>23.5 kg</b><span>To Go</span></div>
       </div>
 
-
-      <button
-        class="primary-btn"
-        onclick="continueEpisode()"
-      >
-        CONTINUE JOURNEY
-      </button>
-
+      <section class="card">
+        <div class="card-heading"><h3>WEEKLY PROGRESS</h3><span>Week 1⌄</span></div>
+        <div class="week">
+          <span>MON<mark>✓</mark></span><span>TUE<mark>✓</mark></span><span>WED<mark>✓</mark></span>
+          <span>THU<mark>✓</mark></span><span>FRI<mark>✓</mark></span><span>SAT<mark>✓</mark></span><span>SUN<mark>○</mark></span>
+        </div>
+        <div class="summary-list">
+          <p><span>⚖ Avg Weight</span><b>↓ 0.8 kg</b></p>
+          <p><span>♟ Avg Steps</span><b>8,214</b></p>
+          <p><span>◉ Avg Calories</span><b>1,940 kcal</b></p>
+          <p><span>◈ Avg Protein</span><b>108 g</b></p>
+          <p><span>💧 Avg Water</span><b>3.1 L</b></p>
+        </div>
+      </section>
     </section>
 
-
-
-    <!-- TODAY -->
-    <section>
-
-      <div class="section-title">
-
-        <h2>
-          Today's Journey
-        </h2>
-
-        <span>
-          DAY <span id="dayNumber">1</span>
-        </span>
-
+    <!-- LOG -->
+    <section id="log" class="page">
+      <div class="section-heading">
+        <div><p class="eyebrow">DAILY TRACKER</p><h2>LOG</h2></div>
+        <button class="icon-btn">＋</button>
       </div>
 
-
-
-      <!-- WALKING -->
-      <div class="tracking-card">
-
-        <div class="tracking-icon">
-          🚶
-        </div>
-
-
-        <div class="tracking-content">
-
-          <div class="tracking-heading">
-
-            <div>
-
-              <h3>
-                Walking
-              </h3>
-
-              <p>
-                Daily movement
-              </p>
-
-            </div>
-
-
-            <strong>
-
-              <span id="steps">
-                0
-              </span>
-
-              <small>
-                / 8,000
-              </small>
-
-            </strong>
-
-          </div>
-
-
-          <div class="progress-bar">
-
-            <div id="stepsProgress"></div>
-
-          </div>
-
-
-          <div class="step-controls">
-
-            <button onclick="addSteps(1000)">
-              +1,000
-            </button>
-
-            <button onclick="addSteps(500)">
-              +500
-            </button>
-
-            <button onclick="addSteps(100)">
-              +100
-            </button>
-
-          </div>
-
-        </div>
-
+      <div class="dates">
+        <span>13<small>WED</small></span><span>14<small>THU</small></span><span>15<small>FRI</small></span>
+        <span>16<small>SAT</small></span><span>17<small>MON</small></span><span class="selected">18<small>SUN</small></span>
       </div>
 
+      <section class="card">
+        <h3 class="blue-title">MEALS</h3>
+        <div class="log-row"><span>☀ Breakfast<small>8:30 AM · Boiled eggs, banana</small></span><b>420 kcal</b></div>
+        <div class="log-row"><span>☼ Lunch<small>1:00 PM · Rice, sambar, chicken, curd</small></span><b>620 kcal</b></div>
+        <div class="log-row"><span>☕ Snack<small>5:00 PM · Peanuts, black coffee</small></span><b>150 kcal</b></div>
+        <div class="log-row"><span>☾ Dinner<small>8:30 PM · Roti, paneer curry, salad</small></span><b>380 kcal</b></div>
+        <button class="secondary-btn">＋ ADD MEAL</button>
+      </section>
 
-
-      <!-- CALORIES -->
-      <div class="tracking-card">
-
-        <div class="tracking-icon">
-          🍽️
+      <section class="card">
+        <h3 class="blue-title">WATER INTAKE</h3>
+        <div class="water-total"><strong>2.4</strong> / 3.5 L</div>
+        <div class="glasses">
+          <i class="filled"></i><i class="filled"></i><i class="filled"></i><i class="filled"></i><i class="filled"></i><i></i><i></i><button>＋</button>
         </div>
-
-
-        <div class="tracking-content">
-
-          <div class="tracking-heading">
-
-            <div>
-
-              <h3>
-                Calories
-              </h3>
-
-              <p>
-                Daily target
-              </p>
-
-            </div>
-
-
-            <strong>
-
-              <span id="calories">
-                0
-              </span>
-
-              <small>
-                / 2,000 kcal
-              </small>
-
-            </strong>
-
-          </div>
-
-
-          <div class="progress-bar">
-
-            <div id="calorieProgress"></div>
-
-          </div>
-
-
-          <button
-            class="secondary-btn"
-            onclick="addCalories()"
-          >
-            + Add calories
-          </button>
-
-        </div>
-
-      </div>
-
-
-
-      <!-- WATER -->
-      <div class="tracking-card">
-
-        <div class="tracking-icon">
-          💧
-        </div>
-
-
-        <div class="tracking-content">
-
-          <div class="tracking-heading">
-
-            <div>
-
-              <h3>
-                Water
-              </h3>
-
-              <p>
-                Daily target
-              </p>
-
-            </div>
-
-
-            <strong>
-
-              <span id="water">
-                0.0
-              </span>
-
-              <small>
-                / 3.5 L
-              </small>
-
-            </strong>
-
-          </div>
-
-
-          <div class="progress-bar">
-
-            <div id="waterProgress"></div>
-
-          </div>
-
-
-          <button
-            class="secondary-btn"
-            onclick="addWater()"
-          >
-            + 500 ml
-          </button>
-
-        </div>
-
-      </div>
-
-
-
-      <!-- SLEEP -->
-      <div class="tracking-card">
-
-        <div class="tracking-icon">
-          🌙
-        </div>
-
-
-        <div class="tracking-content">
-
-          <div class="tracking-heading">
-
-            <div>
-
-              <h3>
-                Sleep
-              </h3>
-
-              <p>
-                Recovery
-              </p>
-
-            </div>
-
-
-            <strong>
-
-              <span id="sleep">
-                0.0
-              </span>
-
-              <small>
-                / 7 hrs
-              </small>
-
-            </strong>
-
-          </div>
-
-
-          <div class="progress-bar">
-
-            <div id="sleepProgress"></div>
-
-          </div>
-
-
-          <button
-            class="secondary-btn"
-            onclick="addSleep()"
-          >
-            + 1 hour
-          </button>
-
-        </div>
-
-      </div>
-
+      </section>
+
+      <section class="card">
+        <h3 class="blue-title">ACTIVITY</h3>
+        <div class="activity-row"><span>♟ Steps</span><b>6,240 <small>/ 8,000</small></b></div>
+      </section>
     </section>
 
+    <!-- MORE -->
+    <section id="more" class="page">
+      <div class="section-heading"><div><p class="eyebrow">SETTINGS & JOURNEY</p><h2>MORE</h2></div></div>
 
+      <section class="card club-card">
+        <div class="club-logo">PT</div>
+        <div><b>Pitch Tales CC</b><span>The Comeback</span><small>Opening a new innings.</small></div>
+        <span>›</span>
+      </section>
 
-    <!-- WEIGHT JOURNEY -->
-    <section class="weight-log">
+      <section class="card menu-card">
+        <h3 class="blue-title">JOURNEY</h3>
+        <p>♡ <span>My Goals</span> ›</p>
+        <p>♕ <span>Milestones</span> ›</p>
+        <p>▣ <span>Photos</span> ›</p>
+        <p>✎ <span>Notes</span> ›</p>
+        <h3 class="blue-title">SETTINGS</h3>
+        <p>♧ <span>Reminders</span> ›</p>
+        <p>⌁ <span>Units</span><small>kg / cm</small> ›</p>
+        <p>◈ <span>Themes</span> ›</p>
+        <p>ⓘ <span>About The Comeback</span> ›</p>
+      </section>
 
-      <div class="section-title">
-
-        <h2>
-          Weight Journey
-        </h2>
-
-      </div>
-
-
-      <div class="weight-number">
-
-        <span id="currentWeight">
-          98.5
-        </span>
-
-        <small>
-          kg
-        </small>
-
-      </div>
-
-
-      <p>
-        Update your current weight
-      </p>
-
-
-      <div class="weight-input">
-
-        <input
-          type="number"
-          id="weightInput"
-          placeholder="Enter weight"
-          step="0.1"
-          min="40"
-          max="200"
-        >
-
-
-        <button onclick="updateWeight()">
-          UPDATE
-        </button>
-
-      </div>
-
+      <section class="quote-card">
+        <div>♕</div>
+        <strong>Discipline today.<br>Victory forever.</strong>
+        <span>— Keep going, Champion!</span>
+      </section>
     </section>
 
-
-
-    <!-- GOAL FORECAST -->
-    <section class="forecast-card">
-
-      <div class="section-title">
-
-        <h2>
-          Goal Forecast
-        </h2>
-
-        <span>
-          CALORIE DEFICIT
-        </span>
-
-      </div>
-
-
-      <div class="forecast-main">
-
-        <div>
-
-          <p>
-            ESTIMATED TIME
-          </p>
-
-          <strong id="goalDays">
-            --
-          </strong>
-
-          <small>
-            days
-          </small>
-
-        </div>
-
-
-        <div class="forecast-date">
-
-          <p>
-            ESTIMATED GOAL DATE
-          </p>
-
-          <strong id="goalDate">
-            --
-          </strong>
-
-        </div>
-
-      </div>
-
-
-      <div class="forecast-stats">
-
-        <div>
-
-          <span>
-            Maintenance
-          </span>
-
-          <strong>
-
-            <span id="maintenanceCalories">
-              2700
-            </span>
-
-            kcal
-
-          </strong>
-
-        </div>
-
-
-        <div>
-
-          <span>
-            Daily Intake
-          </span>
-
-          <strong>
-
-            <span id="forecastCalories">
-              2000
-            </span>
-
-            kcal
-
-          </strong>
-
-        </div>
-
-
-        <div>
-
-          <span>
-            Daily Deficit
-          </span>
-
-          <strong>
-
-            <span id="dailyDeficit">
-              700
-            </span>
-
-            kcal
-
-          </strong>
-
-        </div>
-
-      </div>
-
-
-      <p class="forecast-note">
-
-        Projection assumes a constant calorie deficit.
-        Actual progress may vary.
-
-      </p>
-
-    </section>
-
-
-
-    <!-- NEXT MILESTONE -->
-    <section class="milestone-card">
-
-      <p>
-        NEXT MILESTONE
-      </p>
-
-      <h2>
-        Reach 95 kg
-      </h2>
-
-
-      <div class="milestone-progress">
-
-        <div id="milestoneProgress"></div>
-
-      </div>
-
-
-      <span id="milestoneText">
-        3.5 kg to go
-      </span>
-
-    </section>
-
-
-
-    <!-- STORY -->
-    <section class="story-card">
-
-      <p>
-        THE COMEBACK
-      </p>
-
-      <h2>
-        One step at a time.
-      </h2>
-
-
-      <p>
-        This isn't about becoming perfect overnight.
-        It's about becoming better every day.
-      </p>
-
-
-      <div class="story-line">
-        🏏 → 🚶 → 💪 → 🏆
-      </div>
-
-    </section>
-
+    <nav class="bottom-nav">
+      <button class="nav-btn active" data-page="home"><span>⌂</span>Home</button>
+      <button class="nav-btn" data-page="log"><span>＋</span>Log</button>
+      <button class="nav-btn" data-page="progress"><span>▥</span>Progress</button>
+      <button class="nav-btn" data-page="more"><span>•••</span>More</button>
+    </nav>
   </main>
 
-
-
-  <!-- BOTTOM NAV -->
-  <nav class="bottom-nav">
-
-    <button class="active">
-
-      🏠
-
-      <span>
-        Journey
-      </span>
-
-    </button>
-
-
-    <button>
-
-      🚶
-
-      <span>
-        Walk
-      </span>
-
-    </button>
-
-
-    <button>
-
-      📖
-
-      <span>
-        Story
-      </span>
-
-    </button>
-
-
-    <button>
-
-      📊
-
-      <span>
-        Progress
-      </span>
-
-    </button>
-
-  </nav>
-
-
-
   <script src="script.js"></script>
-
 </body>
 </html>
