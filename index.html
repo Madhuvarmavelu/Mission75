@@ -41,16 +41,50 @@
       </div>
     </section>
 
+    <section class="card calorie-card">
+      <div class="section-head">
+        <h2>Calorie Balance</h2>
+        <span id="deficitLabel">−1,188 kcal</span>
+      </div>
+
+      <div class="calorie-grid">
+        <div>
+          <span class="muted">CONSUMED</span>
+          <strong id="consumedValue">1,420</strong>
+          <small>kcal</small>
+        </div>
+        <div>
+          <span class="muted">BASE BURN</span>
+          <strong id="baseBurnValue">2,280</strong>
+          <small>kcal</small>
+        </div>
+        <div>
+          <span class="muted">STEPS BURN</span>
+          <strong id="stepsBurnValue">328</strong>
+          <small>kcal</small>
+        </div>
+      </div>
+
+      <div class="calorie-total">
+        <span>Total estimated burn</span>
+        <b id="totalBurnValue">2,608 kcal</b>
+      </div>
+
+      <div class="calorie-note">
+        Deficit = total burn − calories consumed
+      </div>
+    </section>
+
     <section class="card timeline-card">
       <div>
         <span class="muted">ESTIMATED TIME TO GOAL</span>
-        <strong id="daysRemaining">259</strong>
+        <strong id="daysRemaining">153</strong>
         <small>days</small>
       </div>
       <div class="timeline-detail">
-        <span>Daily deficit</span>
-        <b id="dailyDeficit">700 kcal</b>
-        <small>based on 2,700 maintenance − 2,000 intake</small>
+        <span>Current daily deficit</span>
+        <b id="dailyDeficit">1,188 kcal</b>
+        <small id="estimateNote">Based on today's intake and steps.</small>
       </div>
     </section>
 

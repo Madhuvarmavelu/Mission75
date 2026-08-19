@@ -1,19 +1,62 @@
-// Goal timeline estimate:
-// remaining kg × 7,700 kcal/kg ÷ daily calorie deficit.
+// Activity-aware calorie calculation.
+// Maintenance/base burn and step burn are kept separate so step calories
+// are not accidentally counted twice.
 const currentWeight = 98.5;
 const goalWeight = 75.0;
-const maintenanceCalories = 2700;
-const targetCalories = 2000;
+const caloriesConsumed = 1420;
+const stepsToday = 6240;
 
-const dailyDeficit = Math.max(maintenanceCalories - targetCalories, 1);
+// Editable assumptions for the tracker.
+const baseDailyBurn = 2280;       // baseline daily burn excluding today's steps
+const stepBurnPerStep = 0.0526;  // ~328 kcal for 6,240 steps
+
+const stepsBurned = Math.round(stepsToday * stepBurnPerStep);
+const totalBurn = baseDailyBurn + stepsBurned;
+const dailyDeficit = Math.max(totalBurn - caloriesConsumed, 0);
+
 const remainingKg = Math.max(currentWeight - goalWeight, 0);
 const requiredDeficit = remainingKg * 7700;
-const daysToGoal = Math.ceil(requiredDeficit / dailyDeficit);
+const daysToGoal = dailyDeficit > 0
+  ? Math.ceil(requiredDeficit / dailyDeficit)
+  : null;
 
-document.getElementById("daysRemaining").textContent = daysToGoal;
+document.getElementById("consumedValue").textContent = caloriesConsumed.toLocaleString();
+document.getElementById("baseBurnValue").textContent = baseDailyBurn.toLocaleString();
+document.getElementById("stepsBurnValue").textContent = stepsBurned.toLocaleString();
+document.getElementById("totalBurnValue").textContent = `${totalBurn.toLocaleString()} kcal`;
+document.getElementById("deficitLabel").textContent = `−${dailyDeficit.toLocaleString()} kcal`;
 document.getElementById("dailyDeficit").textContent = `${dailyDeficit.toLocaleString()} kcal`;
+document.getElementById("daysRemaining").textContent = daysToGoal ?? "—";
+
+// Activity-aware calorie calculation.
+// Step calories are separate from baseline burn to avoid double-counting.
+const currentWeight = 98.5;
+const goalWeight = 75.0;
+const caloriesConsumed = 1420;
+const stepsToday = 6240;
+
+const baseDailyBurn = 2280;
+const stepBurnPerStep = 0.0526;
+
+const stepsBurned = Math.round(stepsToday * stepBurnPerStep);
+const totalBurn = baseDailyBurn + stepsBurned;
+const dailyDeficit = Math.max(totalBurn - caloriesConsumed, 0);
+
+const remainingKg = Math.max(currentWeight - goalWeight, 0);
+const daysToGoal = dailyDeficit > 0
+  ? Math.ceil((remainingKg * 7700) / dailyDeficit)
+  : null;
+
+document.getElementById("consumedValue").textContent = caloriesConsumed.toLocaleString();
+document.getElementById("baseBurnValue").textContent = baseDailyBurn.toLocaleString();
+document.getElementById("stepsBurnValue").textContent = stepsBurned.toLocaleString();
+document.getElementById("totalBurnValue").textContent = `${totalBurn.toLocaleString()} kcal`;
+document.getElementById("deficitLabel").textContent = `−${dailyDeficit.toLocaleString()} kcal`;
+document.getElementById("dailyDeficit").textContent = `${dailyDeficit.toLocaleString()} kcal`;
+document.getElementById("daysRemaining").textContent = daysToGoal ?? "—";
 
 const canvas = document.getElementById("weightChart");
+
 const ctx = canvas.getContext("2d");
 
 function drawChart(){

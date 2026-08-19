@@ -353,3 +353,16 @@ h1 span{
   line-height:1.35;
   max-width:155px;
 }
+
+
+.calorie-card{padding:16px;margin-bottom:8px}
+.calorie-card .section-head{margin-bottom:15px}
+.calorie-card .section-head span{color:#fff;font-size:12px}
+.calorie-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.calorie-grid>div{padding-right:8px;border-right:1px solid var(--border)}
+.calorie-grid>div:last-child{border-right:0}
+.calorie-grid strong{display:inline-block;font-size:19px;margin-top:2px}
+.calorie-grid small{color:var(--muted);font-size:8px}
+.calorie-total{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border);margin-top:14px;padding-top:12px;font-size:10px;color:var(--muted)}
+.calorie-total b{color:#fff;font-size:12px}
+.calorie-note{margin-top:11px;padding:8px;border:1px solid #1b2734;border-radius:7px;text-align:center;color:#697789;font-size:8px}
