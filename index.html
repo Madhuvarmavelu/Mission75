@@ -4,140 +4,181 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="theme-color" content="#05070b">
+  <meta name="apple-mobile-web-app-capable" content="yes">
   <title>Madhuvarma — The Comeback</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <main class="app">
+
     <header class="header">
       <div>
-        <div class="label">THE COMEBACK</div>
+        <div class="eyebrow">THE COMEBACK</div>
         <h1>Madhuvarma<span>.</span></h1>
         <p>One day at a time.</p>
       </div>
-      <div class="day">DAY 06</div>
+      <div class="day-pill" id="dayPill">DAY 06</div>
     </header>
 
-    <section class="hero card">
-      <div class="hero-top">
+    <section class="weight-card card">
+      <button class="edit-corner" data-edit="weight" aria-label="Edit weight">✎</button>
+
+      <div class="weight-row">
         <div>
-          <span class="muted">CURRENT WEIGHT</span>
-          <strong class="weight">98.5 <small>kg</small></strong>
+          <label>CURRENT</label>
+          <strong><span id="currentWeight">98.5</span><small>kg</small></strong>
         </div>
-        <div class="goal">
-          <span class="muted">GOAL</span>
-          <strong>75.0 <small>kg</small></strong>
+
+        <div class="goal-ring">
+          <div>
+            <strong id="remainingWeight">23.5</strong>
+            <span>KG TO GO</span>
+          </div>
+        </div>
+
+        <div class="goal-value">
+          <label>GOAL</label>
+          <strong><span id="goalWeight">75.0</span><small>kg</small></strong>
         </div>
       </div>
 
-      <div class="progress-track">
-        <div class="progress-fill"></div>
+      <div class="weight-progress">
+        <div id="weightProgress"></div>
       </div>
-
-      <div class="progress-meta">
-        <span>0 kg</span>
-        <b>23.5 kg to go</b>
-        <span>75 kg</span>
+      <div class="weight-meta">
+        <span>Start</span>
+        <b id="weightPercent">0%</b>
+        <span>Goal</span>
       </div>
     </section>
 
     <section class="card calorie-card">
-      <div class="section-head">
+      <div class="card-head">
         <h2>Calorie Balance</h2>
-        <span id="deficitLabel">−1,188 kcal</span>
+        <strong id="dailyDeficit">−1,188 kcal</strong>
       </div>
 
       <div class="calorie-grid">
-        <div>
-          <span class="muted">CONSUMED</span>
-          <strong id="consumedValue">1,420</strong>
+        <button class="editable-stat" data-edit="calories">
+          <span>CONSUMED</span>
+          <b id="caloriesConsumed">1,420</b>
           <small>kcal</small>
-        </div>
-        <div>
-          <span class="muted">BASE BURN</span>
-          <strong id="baseBurnValue">2,280</strong>
+          <i>✎</i>
+        </button>
+
+        <button class="editable-stat" data-edit="baseBurn">
+          <span>BASE BURN</span>
+          <b id="baseBurn">2,280</b>
           <small>kcal</small>
-        </div>
-        <div>
-          <span class="muted">STEPS BURN</span>
-          <strong id="stepsBurnValue">328</strong>
+          <i>✎</i>
+        </button>
+
+        <button class="editable-stat" data-edit="steps">
+          <span>STEPS BURN</span>
+          <b id="stepsBurn">328</b>
           <small>kcal</small>
-        </div>
+          <i>✎</i>
+        </button>
       </div>
 
-      <div class="calorie-total">
+      <div class="total-row">
         <span>Total estimated burn</span>
-        <b id="totalBurnValue">2,608 kcal</b>
+        <b id="totalBurn">2,608 kcal</b>
       </div>
 
-      <div class="calorie-note">
-        Deficit = total burn − calories consumed
-      </div>
+      <p class="formula">Deficit = total burn − calories consumed</p>
     </section>
 
-    <section class="card timeline-card">
+    <section class="card goal-time">
       <div>
-        <span class="muted">ESTIMATED TIME TO GOAL</span>
+        <label>ESTIMATED TIME TO GOAL</label>
         <strong id="daysRemaining">153</strong>
-        <small>days</small>
+        <span>days</span>
+        <small id="monthsRemaining">≈ 5.1 months</small>
       </div>
-      <div class="timeline-detail">
-        <span>Current daily deficit</span>
-        <b id="dailyDeficit">1,188 kcal</b>
-        <small id="estimateNote">Based on today's intake and steps.</small>
+
+      <div class="goal-details">
+        <p><span>Daily deficit</span><b id="goalDeficit">1,188 kcal</b></p>
+        <p><span>Remaining</span><b id="goalRemaining">23.5 kg</b></p>
+        <p><span>Estimate</span><b id="goalDate">—</b></p>
       </div>
     </section>
 
-    <section class="today">
-      <div class="section-head">
+    <section class="today-section">
+      <div class="today-head">
         <h2>Today</h2>
-        <span id="todayPercent">78%</span>
+        <strong id="todayPercent">78%</strong>
       </div>
 
-      <div class="metric card">
-        <div class="metric-head"><span>Steps</span><b>6,240 <i>/ 8,000</i></b></div>
-        <div class="line"><span style="width:78%"></span></div>
-      </div>
+      <button class="metric card" data-edit="steps">
+        <div class="metric-head">
+          <span>Steps</span>
+          <b><span id="stepsValue">6,240</span> <i>/ 8,000</i></b>
+        </div>
+        <div class="bar"><span id="stepsBar"></span></div>
+      </button>
 
-      <div class="metric card">
-        <div class="metric-head"><span>Calories</span><b>1,420 <i>/ 2,000</i></b></div>
-        <div class="line"><span style="width:71%"></span></div>
-      </div>
+      <button class="metric card" data-edit="calories">
+        <div class="metric-head">
+          <span>Calories</span>
+          <b><span id="caloriesValue">1,420</span> <i>/ 2,000</i></b>
+        </div>
+        <div class="bar"><span id="caloriesBar"></span></div>
+      </button>
 
-      <div class="metric card">
-        <div class="metric-head"><span>Protein</span><b>82 <i>/ 120 g</i></b></div>
-        <div class="line"><span style="width:68%"></span></div>
-      </div>
+      <button class="metric card" data-edit="protein">
+        <div class="metric-head">
+          <span>Protein</span>
+          <b><span id="proteinValue">82</span> <i>/ 120 g</i></b>
+        </div>
+        <div class="bar"><span id="proteinBar"></span></div>
+      </button>
 
-      <div class="metric card">
-        <div class="metric-head"><span>Water</span><b>2.4 <i>/ 3.5 L</i></b></div>
-        <div class="line"><span style="width:69%"></span></div>
+      <button class="metric card" data-edit="water">
+        <div class="metric-head">
+          <span>Water</span>
+          <b><span id="waterValue">2.4</span> <i>/ 3.5 L</i></b>
+        </div>
+        <div class="bar"><span id="waterBar"></span></div>
+      </button>
+    </section>
+
+    <section class="quick-edit card">
+      <div class="card-head">
+        <h2>Quick Edit</h2>
+        <span>Tap any value</span>
+      </div>
+      <div class="quick-grid">
+        <button data-edit="weight"><span>Weight</span><b id="quickWeight">98.5 kg</b></button>
+        <button data-edit="calories"><span>Calories</span><b id="quickCalories">2,000</b></button>
+        <button data-edit="baseBurn"><span>Base burn</span><b id="quickBaseBurn">2,280</b></button>
+        <button data-edit="stepsGoal"><span>Step goal</span><b id="quickStepsGoal">8,000</b></button>
       </div>
     </section>
 
-    <section class="card chart-card">
-      <div class="section-head">
-        <h2>Weight</h2>
-        <span>90 days</span>
-      </div>
-      <div class="chart-number">98.5 <small>kg</small></div>
-      <canvas id="weightChart" height="150"></canvas>
-      <div class="chart-footer">
-        <span>START</span>
-        <b>75.0 kg GOAL</b>
-      </div>
-    </section>
-
-    <section class="card summary">
-      <div><strong>−1.7 kg</strong><span>Total lost</span></div>
-      <div><strong>6,240</strong><span>Steps today</span></div>
-      <div><strong>2.4 L</strong><span>Water today</span></div>
-    </section>
-
-    <button class="log-button" id="logButton">+ Log today</button>
-
-    <p class="quote">Keep going, Madhuvarma.</p>
+    <p class="quote">Discipline today. Freedom tomorrow.</p>
   </main>
+
+  <div class="modal" id="modal" aria-hidden="true">
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-sheet">
+      <div class="modal-head">
+        <div>
+          <span class="eyebrow">EDIT</span>
+          <h2 id="modalTitle">Weight</h2>
+        </div>
+        <button class="close" data-close>×</button>
+      </div>
+
+      <label class="input-label" id="inputLabel">Value</label>
+      <div class="input-wrap">
+        <input id="editInput" type="number" inputmode="decimal" step="0.1">
+        <span id="inputUnit">kg</span>
+      </div>
+
+      <button class="save-btn" id="saveBtn">Save</button>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>
