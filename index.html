@@ -1,15 +1,288 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Weight Tracker</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LEO Weight Loss Quest</title>
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-<div id="app"></div>
+
+<div class="app">
+
+  <header class="top">
+    <div class="logo">LEO</div>
+    <div class="rank" id="rank">LEVEL 1 · ROOKIE</div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+
+    <div class="eyebrow">WEIGHT LOSS QUEST</div>
+
+    <div class="weight" id="weightDisplay">
+      98.5 kg
+    </div>
+
+    <div class="goal">
+      Goal: 75 kg ·
+      <span id="kgLeft">23.5 kg</span> to go ·
+      <b id="daysLeft">~259 days</b>
+    </div>
+
+    <div class="progress-bar">
+      <div class="progress-fill" id="progress"></div>
+    </div>
+
+    <div class="xp-row">
+      <span id="xp">0 XP</span>
+      <span id="levelNext">100 XP to next level</span>
+    </div>
+
+    <div class="note">
+      Estimated using a 700 kcal/day deficit (~0.64 kg/week).
+    </div>
+
+  </section>
+
+
+  <!-- DAILY STATS -->
+  <div class="stats-grid">
+
+    <div class="card">
+      <div class="label">CALORIES</div>
+
+      <input
+        id="calories"
+        class="stat-input"
+        type="number"
+        min="0"
+        placeholder="0"
+      >
+
+      <div class="sub">/ 2,000 kcal</div>
+    </div>
+
+
+    <div class="card">
+      <div class="label">PROTEIN</div>
+
+      <input
+        id="protein"
+        class="stat-input"
+        type="number"
+        min="0"
+        placeholder="0"
+      >
+
+      <div class="sub">/ 120 g</div>
+    </div>
+
+
+    <div class="card">
+      <div class="label">STEPS</div>
+
+      <input
+        id="steps"
+        class="stat-input"
+        type="number"
+        min="0"
+        placeholder="0"
+      >
+
+      <div class="sub">/ 8,000</div>
+    </div>
+
+
+    <div class="card">
+      <div class="label">WATER</div>
+
+      <input
+        id="water"
+        class="stat-input"
+        type="number"
+        min="0"
+        step="0.1"
+        placeholder="0"
+      >
+
+      <div class="sub">/ 3.5 L</div>
+    </div>
+
+  </div>
+
+
+  <!-- MISSIONS -->
+
+  <div class="section-title">
+    DAILY MISSIONS
+  </div>
+
+
+  <label class="mission">
+
+    <input
+      type="checkbox"
+      id="m1"
+      data-xp="50"
+    >
+
+    <span>
+      <strong>Hit 8,000 steps</strong>
+      <small>+50 XP</small>
+    </span>
+
+  </label>
+
+
+  <label class="mission">
+
+    <input
+      type="checkbox"
+      id="m2"
+      data-xp="50"
+    >
+
+    <span>
+      <strong>Stay within 2,000 kcal</strong>
+      <small>+50 XP</small>
+    </span>
+
+  </label>
+
+
+  <label class="mission">
+
+    <input
+      type="checkbox"
+      id="m3"
+      data-xp="40"
+    >
+
+    <span>
+      <strong>Reach 120g protein</strong>
+      <small>+40 XP</small>
+    </span>
+
+  </label>
+
+
+  <label class="mission">
+
+    <input
+      type="checkbox"
+      id="m4"
+      data-xp="30"
+    >
+
+    <span>
+      <strong>Drink 3.5L water</strong>
+      <small>+30 XP</small>
+    </span>
+
+  </label>
+
+
+  <label class="mission">
+
+    <input
+      type="checkbox"
+      id="m5"
+      data-xp="30"
+    >
+
+    <span>
+      <strong>Sleep before target time</strong>
+      <small>+30 XP</small>
+    </span>
+
+  </label>
+
+
+  <label class="mission">
+
+    <input
+      type="checkbox"
+      id="m6"
+      data-xp="25"
+    >
+
+    <span>
+      <strong>No sugary drinks</strong>
+      <small>+25 XP</small>
+    </span>
+
+  </label>
+
+
+  <!-- WEIGHT -->
+
+  <div class="section-title">
+    TODAY'S WEIGHT
+  </div>
+
+
+  <div class="weight-row">
+
+    <input
+      id="weightInput"
+      class="weight-input"
+      type="number"
+      min="0"
+      step="0.1"
+      placeholder="98.5 kg"
+    >
+
+    <button
+      class="save-button"
+      id="saveWeight"
+    >
+      SAVE
+    </button>
+
+    <button
+      class="reset-button"
+      id="reset"
+    >
+      RESET
+    </button>
+
+  </div>
+
+
+  <!-- XP INFO -->
+
+  <div class="section-title">
+    HOW XP WORKS
+  </div>
+
+
+  <div class="card note-card">
+
+    Calories, protein, steps and water each contribute
+    up to <strong>50 XP</strong> based on progress toward
+    your target.
+
+    <br><br>
+
+    Completed missions add bonus XP.
+
+    <br><br>
+
+    XP is recalculated from your current values, so changing
+    a number never double-counts XP.
+
+  </div>
+
+
+  <div class="footer">
+    LEO · WEIGHT LOSS QUEST
+  </div>
+
+</div>
+
 <script src="script.js"></script>
+
 </body>
 </html>
